@@ -1,7 +1,3 @@
-// build -> circleci -> show
-// build -> circleci -> run
-// project -> server -> compile
-
 
 var json_text = {
   "backlog": [],
@@ -58,28 +54,27 @@ var json_text = {
 }
 
 var data_obj = JSON.parse(JSON.stringify(json_text));
-var action_path = ["build", "circleci", "show"]
+var action_path = ["project", "client", "lint"]
+// var action_path = ["show", "circleci", "build"]
 
 
 function action_lookup(data_obj, action_path) {
+  if(action_path.length !== 0)  // do null checks and empty array checks
 
-	if(action_path.length !== 0)  // do null checks and empty array checks
-
-  for(var i = 0; i < action_path.length; i++) {
-    for(key in data_obj) {
+    for(var i = 0; i < action_path.length; i++) {
+      for(key in data_obj) {
       console.log(key);
       console.log(action_path[i]);
       if(key === action_path[i]) {
         let action = data_obj[key];
-        console.log('action', action);
+        console.log('action', action[0].actions);
         for(var j = 0; j < action.length; j++) {
-          console.log('digging',action[i].actions);
-          for(key in action[i].actions) {
+          // console.log('digging',action[i].actions);
+          for(key in action[0].actions) {
             for(var k = 0; k < action_path.length; k++) {
-
               if(key === action_path[k]) {
-            console.log('keys again', action[i].actions[key]);
-          return true;
+              console.log('keys again', action[0].actions[key]);
+              return action[0].actions[key];
               }
             }
           }
