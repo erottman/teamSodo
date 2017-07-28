@@ -1,6 +1,6 @@
 var chai = require('chai')
 var assert = chai.assert
-var every = require('../src/loopSolution')
+var every = require('../src/hash-test.js')
 
 // describe('every', function () {
 //   it('should return action path of unordered array', function () {
