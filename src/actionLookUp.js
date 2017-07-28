@@ -1,3 +1,4 @@
+var json_text = require('../src/build.json')
 
 function parseJSON(json) {
   let map = {}
