@@ -15,14 +15,19 @@ function parseJSON(json) {
   return map
 }
 
+
 function actionLookup(map, actionPath) {
 	return map[actionPath]
 }
+
 
 let path = ["build", "show", "circleci"].sort().join("")
 let jsonMap = parseJSON(json_text);
 let lookup = actionLookup(jsonMap, path);
 
-console.log(lookup)
+// console.log(lookup)
 
-module.exports = actionLookup
+module.exports = {
+  parseJSON,
+  actionLookup
+}
